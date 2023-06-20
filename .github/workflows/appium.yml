@@ -17,7 +17,6 @@ jobs:
         repository: khoanhuynh-evizi/rc360-wdio
         token: ${{ secrets.WDIO_ACCESS_TOKEN }}
         ref: appium
-
     - name: Use Node.js 16.x
       uses: actions/setup-node@v3
       with:
@@ -33,6 +32,12 @@ jobs:
         shutdown_after_job: false
     - run: yarn install --frozen-lockfile
       id: wdio
+    - run: |
+        npm install -g appium@next
+        appium plugin install execute-driver
+        appium -pa /wd/hub --use-plugins execute-driver
+        appium driver install xcuitest
+        appium driver install uiautomator2
     - name: Run webdriver-io tests
       uses: mathiasvr/command-output@v2.0.0
       with:
