@@ -29,6 +29,8 @@ jobs:
     - uses: futureware-tech/simulator-action@v2
       with:
         model: iPhone 14
+        erase_before_boot: false
+        shutdown_after_job: false
     - run: yarn install --frozen-lockfile
       id: wdio
     - name: Run webdriver-io tests
