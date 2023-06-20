@@ -36,7 +36,6 @@ jobs:
         npm install -g appium@next
         appium plugin install execute-driver
         appium driver install xcuitest
-        appium driver install uiautomator2
     - name: Run webdriver-io tests
       uses: mathiasvr/command-output@v2.0.0
       with:
