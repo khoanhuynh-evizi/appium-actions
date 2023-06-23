@@ -28,8 +28,8 @@ jobs:
     - uses: futureware-tech/simulator-action@v2
       with:
         model: iPhone 14
-        erase_before_boot: false
-        shutdown_after_job: false
+        erase_before_boot: true
+        shutdown_after_job: true
     - run: yarn install --frozen-lockfile
       id: wdio
     - run: |
