@@ -13,7 +13,7 @@ jobs:
     runs-on: macos-13
     env:
       xcode-version: 14.3
-      destination: name=iPhone 14
+      destination: name=iPhone 11
       demo-version: 1.6.3
     steps:
       - uses: actions/checkout@v3
@@ -58,7 +58,7 @@ jobs:
     needs: build-ios-app
     env:
       xcode-version: 14.3
-      destination: iPhone 14
+      destination: iPhone 11
     steps:
     - uses: actions/checkout@v3
       with:
