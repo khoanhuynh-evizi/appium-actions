@@ -15,7 +15,6 @@ jobs:
       xcode-version: 14.3
       destination: name=iPhone 14
       demo-version: 1.6.3
-
     steps:
       - uses: actions/checkout@v3
         with:
@@ -43,20 +42,17 @@ jobs:
             -destination "${{ env.destination }}" \
             -configuration Release \
             -derivedDataPath build | xcpretty
-      - name: Zip iOS Simulator Build
-        run: |
-          mkdir Payload
-          cp -R build/Build/Products/Release-iphonesimulator/My\ Demo\ App.app Payload
-          zip -9 -r SauceLabs-Demo-App.Simulator.zip Payload
-          rm -rf Payload
       - uses: actions/upload-artifact@v3
         with:
           name: SauceLabs-Demo-App.Simulator
-          path: SauceLabs-Demo-App.Simulator.zip
+          path: Payload/
           retention-days: 7
   run-on-ios:
     runs-on: macos-13
     needs: build-ios-app
+    env:
+      xcode-version: 14.3
+      destination: iPhone 14
     steps:
     - uses: actions/checkout@v3
       with:
@@ -70,10 +66,10 @@ jobs:
         cache: yarn
     - uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: latest-stable
+        xcode-version: ${{ env.xcode-version }}
     - uses: futureware-tech/simulator-action@v2
       with:
-        model: iPhone 14
+        model: ${{ env.destination }}
         erase_before_boot: true
         shutdown_after_job: true
     - run: yarn install --frozen-lockfile
