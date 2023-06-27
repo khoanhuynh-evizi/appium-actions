@@ -14,8 +14,14 @@ jobs:
     env:
       xcode-version: 14.3
       destination: name=iPhone 14
+      demo-version: 1.6.3
 
     steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: saucelabs/my-demo-app-ios
+          token: ${{ secrets.WDIO_ACCESS_TOKEN }}
+          ref: ${{ env.demo-version }}
       - name: Install Dependencies
         run: gem install xcpretty
       - uses: maxim-lobanov/setup-xcode@v1
@@ -23,7 +29,7 @@ jobs:
           xcode-version: ${{ env.xcode-version }}
       - name: Set Release Version
         run: |
-          xcrun agvtool new-marketing-version "1.6.3"
+          xcrun agvtool new-marketing-version ${{ env.demo-version }}
       - name: Build for iOS Simulator
         run: |
           set -o pipefail && \
