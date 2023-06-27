@@ -42,10 +42,16 @@ jobs:
             -destination "${{ env.destination }}" \
             -configuration Release \
             -derivedDataPath build | xcpretty
+      - name: Zip iOS Simulator Build
+        run: |
+          mkdir Payload
+          cp -R build/Build/Products/Release-iphonesimulator/My\ Demo\ App.app Payload
+          zip -9 -r SauceLabs-Demo-App.Simulator.zip Payload
+          rm -rf Payload
       - uses: actions/upload-artifact@v3
         with:
           name: SauceLabs-Demo-App.Simulator
-          path: Payload/
+          path: SauceLabs-Demo-App.Simulator.zip
           retention-days: 7
   run-on-ios:
     runs-on: macos-13
