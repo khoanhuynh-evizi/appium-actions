@@ -73,7 +73,8 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: SauceLabs-Demo-App.Simulator
-        path: apps/SauceLabs-Demo-App.Simulator.zip
+        path: ./apps/SauceLabs-Demo-App.Simulator.zip
+    - run: ls ./apps
     - run: unzip -o ./apps/SauceLabs-Demo-App.Simulator.zip
     - uses: maxim-lobanov/setup-xcode@v1
       with:
