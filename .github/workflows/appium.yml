@@ -60,6 +60,10 @@ jobs:
       xcode-version: 14.3
       destination: iPhone 14
     steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: SauceLabs-Demo-App.Simulator
+        path: apps/SauceLabs-Demo-App.Simulator.zip
     - uses: actions/checkout@v3
       with:
         repository: khoanhuynh-evizi/rc360-wdio
