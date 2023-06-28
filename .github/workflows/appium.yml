@@ -75,8 +75,8 @@ jobs:
         name: SauceLabs-Demo-App.Simulator
         path: ./apps/SauceLabs-Demo-App.Simulator.zip
     - run: |
-        chmod 777 ./apps/SauceLabs-Demo-App.Simulator.zip
-        unzip -o ./apps/SauceLabs-Demo-App.Simulator.zip
+        chmod 777 /Users/runner/work/appium-actions/appium-actions/apps/SauceLabs-Demo-App.Simulator.zip
+        unzip -o /Users/runner/work/appium-actions/appium-actions/apps/SauceLabs-Demo-App.Simulator.zip
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: ${{ env.xcode-version }}
