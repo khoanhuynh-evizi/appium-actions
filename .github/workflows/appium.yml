@@ -14,13 +14,13 @@ jobs:
     env:
       xcode-version: 14.3
       destination: name=iPhone 14
-      demo-version: 1.6.4
+      demo-version: 1.6.3
     steps:
       - uses: actions/checkout@v3
         with:
           repository: saucelabs/my-demo-app-ios
           token: ${{ secrets.WDIO_ACCESS_TOKEN }}
-          ref: master
+          ref: ${{ env.xcode-version }}
       - name: Install Dependencies
         run: gem install xcpretty
       - uses: maxim-lobanov/setup-xcode@v1
@@ -46,7 +46,7 @@ jobs:
         run: |
           mkdir Payload
           cp -R build/Build/Products/Release-iphonesimulator/My\ Demo\ App.app Payload
-          zip -9 -r SauceLabs-Demo-App.Simulator.zip Payload
+          zip -r SauceLabs-Demo-App.Simulator.zip Payload
           rm -rf Payload
       - uses: actions/upload-artifact@v3
         with:
