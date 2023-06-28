@@ -74,7 +74,7 @@ jobs:
       with:
         name: SauceLabs-Demo-App.Simulator
         path: apps/SauceLabs-Demo-App.Simulator.zip
-    - run: unzip -o apps/SauceLabs-Demo-App.Simulator.zip
+    - run: unzip -o ./apps/SauceLabs-Demo-App.Simulator.zip
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: ${{ env.xcode-version }}
