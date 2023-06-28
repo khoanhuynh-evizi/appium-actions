@@ -78,8 +78,9 @@ jobs:
     - run: | 
         cd apps
         sudo chmod 777 SauceLabs-Demo-App.Simulator.zip
-        unzip apps/SauceLabs-Demo-App.Simulator.zip
-        zip -r SauceLabs-Demo-App.Simulator.zip Payload
+        # unzip SauceLabs-Demo-App.Simulator.zip
+        # rm -rf SauceLabs-Demo-App.Simulator.zip
+        # zip -r SauceLabs-Demo-App.Simulator.zip Payload
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: ${{ env.xcode-version }}
