@@ -84,13 +84,13 @@ jobs:
         erase_before_boot: true
         shutdown_after_job: true
     - run: yarn install --immutable
-      id: wdio
     - run: |
         npm install -g appium@2.0.0-rc.3
         appium driver install xcuitest
         appium driver install uiautomator2
     - name: Run webdriver-io tests
       uses: mathiasvr/command-output@v2.0.0
+      id: wdio
       with:
         run: yarn ios:app
     - name: WDIO Test Checker
