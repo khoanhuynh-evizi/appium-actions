@@ -53,6 +53,7 @@ jobs:
           name: SauceLabs-Demo-App.Simulator
           path: SauceLabs-Demo-App.Simulator.zip
           retention-days: 7
+          
   run-on-ios:
     runs-on: macos-13
     needs: build-ios-app
@@ -60,10 +61,6 @@ jobs:
       xcode-version: 14.3
       destination: iPhone 14
     steps:
-    - uses: actions/download-artifact@v3
-      with:
-        name: SauceLabs-Demo-App.Simulator
-        path: apps/SauceLabs-Demo-App.Simulator.zip
     - uses: actions/checkout@v3
       with:
         repository: khoanhuynh-evizi/rc360-wdio
@@ -74,6 +71,10 @@ jobs:
       with:
         node-version: 16.x
         cache: yarn
+    - uses: actions/download-artifact@v3
+      with:
+        name: SauceLabs-Demo-App.Simulator
+        path: apps/SauceLabs-Demo-App.Simulator.zip
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: ${{ env.xcode-version }}
