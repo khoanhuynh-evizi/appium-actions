@@ -81,8 +81,7 @@ jobs:
     - run: yarn install --immutable
       id: wdio
     - run: |
-        npm install -g appium@next
-        appium plugin install execute-driver
+        npm install -g appium@2.0.0-rc.3
         appium driver install xcuitest
         appium driver install uiautomator2
     - name: Run webdriver-io tests
