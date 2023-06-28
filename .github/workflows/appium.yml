@@ -78,7 +78,7 @@ jobs:
         model: ${{ env.destination }}
         erase_before_boot: true
         shutdown_after_job: true
-    - run: yarn install --frozen-lockfile
+    - run: yarn install --immutable
       id: wdio
     - run: |
         npm install -g appium@next
