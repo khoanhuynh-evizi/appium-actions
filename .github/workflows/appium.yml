@@ -20,7 +20,7 @@ jobs:
         with:
           repository: saucelabs/my-demo-app-ios
           token: ${{ secrets.WDIO_ACCESS_TOKEN }}
-          ref: ${{ env.xcode-version }}
+          ref: ${{ env.demo-version }}
       - name: Install Dependencies
         run: gem install xcpretty
       - uses: maxim-lobanov/setup-xcode@v1
